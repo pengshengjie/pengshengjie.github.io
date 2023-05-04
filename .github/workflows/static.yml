@@ -31,10 +31,12 @@ jobs:
       PATH: /opt/hostedtoolcache/node/14.21.3/x64/bin:$PATH
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code from repo
         uses: actions/checkout@v2
-        with:
-          ref: main
+        env:
+          PATH: /usr/bin:/usr/local/bin:/bin
+      - name: Install tar
+        run: sudo apt-get install tar
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
