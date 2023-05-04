@@ -1,18 +1,43 @@
-name: Deploy to GitHub Pages
+# 整个流程的名字
+name: Release
+
+# 触发时机，在 main 分支 push 操作触发
 on:
   push:
     branches:
-      - master
+      - main
+
+# 默认shell
+defaults:
+  run:
+    shell: bash
+
+# 任务，定义个changelog 的任务
 jobs:
-  build-and-deploy:
+  changelog:
+    name: Changelog PR or Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: yarn install
+      - uses: actions/checkout@v3
+      # 设置 pnpm。指定版本7.0，不然会报错
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: ^7.0
+
+      # 设置 Node
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+      # 安装依赖
+      - name: Install
+        run: pnpm install
+      # 打包
       - name: Build
-        run: yarn run build --if-present
+        run: pnpm run build
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
