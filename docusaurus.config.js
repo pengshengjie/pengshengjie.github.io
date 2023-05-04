@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "CodingJ的博客",
-  tagline: "Dinosaurs are cool",
+  tagline: "The codingJ Blog",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
