@@ -38,8 +38,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: main
-          folder: ./build
+          # Upload entire repository
+          path: './build'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
