@@ -27,6 +27,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      PATH: /opt/hostedtoolcache/node/14.21.3/x64/bin:$PATH
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
