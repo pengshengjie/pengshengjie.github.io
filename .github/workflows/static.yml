@@ -38,13 +38,10 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     # Upload entire repository
-      #     path: './build'
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@v2
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.5.7
         with:
-          name: built-files
-          path: build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages 
+          FOLDER: build 
+
