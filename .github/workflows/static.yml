@@ -33,6 +33,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+        setup_tar: true
 
       - name: Use Node.js
         uses: actions/setup-node@v2
