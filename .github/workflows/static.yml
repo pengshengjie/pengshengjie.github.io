@@ -10,9 +10,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Install Dependencies
-        run: npm i
+        run: yarn install
       - name: Build
-        run: npm run build --if-present
+        run: yarn run build --if-present
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
