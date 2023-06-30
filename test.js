@@ -34,3 +34,9 @@ document.getElementsByTagName("head")[0].appendChild(style);
 setInterval(() => {
   document.querySelector(".dplayer-video-current").pause = () => false;
 }, 100);
+
+
+const isVisibel = true;
+if(isVisibel) {
+  
+}
